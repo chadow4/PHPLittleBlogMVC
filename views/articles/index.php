@@ -1,5 +1,5 @@
 <div class="row flex-column">
-    <a class="btn btn-primary rounded class mb-5 m-auto col-8 col-md-4 col-lg-2" href="/mvc/articles/add">Ajouter un
+    <a class="btn btn-primary rounded class mb-5 m-auto col-8 col-md-4 col-lg-2" href="/articles/add">Ajouter un
         article</a>
 
     <div class="m-auto col-12 col-md-8 col-lg-6">
