@@ -7,7 +7,7 @@
         <?php foreach ($articles as $article): ?>
 
             <hr>
-            <a href="/mvc/articles/lire/<?= $article['slug'] ?>"><?= $article['title'] ?></a>
+            <a href="/articles/lire/<?= $article['slug'] ?>"><?= $article['title'] ?></a>
 
             <p>Contenu : <?= $article['content'] ?></p>
 
