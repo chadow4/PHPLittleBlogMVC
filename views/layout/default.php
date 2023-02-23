@@ -17,7 +17,7 @@
     <?= $content ?>
 </main>
 <footer>
-    <p class="text-center">Copyright 2019</p>
+    <p class="text-center">Copyright 2022</p>
 </footer>
 </body>
 </html>

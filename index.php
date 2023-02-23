@@ -1,55 +1,41 @@
 <?php
 
-// On génère une constante contenant le chemin vers la racine publique du projet
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 
-// On appelle le modèle et le contrôleur principaux
 require_once(ROOT . 'app/Model.php');
 require_once(ROOT . 'app/Controller.php');
 
-// On sépare les paramètres et on les met dans le tableau $params
-$params = explode('/', $_GET['p']);
+$myparams = explode('/', $_GET['p']);
 
-// Si au moins 1 paramètre existe
-if ($params[0] != "") {
-    // On sauvegarde le 1er paramètre dans $controller en mettant sa 1ère lettre en majuscule
-    $controller = ucfirst($params[0]);
+if ($myparams[0] != "") {
+    $controller = ucfirst($myparams[0]);
 
-    // On sauvegarde le 2ème paramètre dans $action si il existe, sinon index
-    $action = isset($params[1]) ? $params[1] : 'index';
+    $action = isset($myparams[1]) ? $myparams[1] : 'index';
 
-    // On appelle le contrôleur si il existe sinon on dit que la page n'existe pas
     $controllerFilePath = ROOT . 'controllers/' . $controller . '.php';
     if (file_exists($controllerFilePath)) {
         require_once($controllerFilePath);
-    } else {
+    }else{
         http_response_code(404);
         echo "La page recherchée n'existe pas";
-        return;
     }
 
-    // On instancie le contrôleur
     $controller = new $controller();
 
     if (method_exists($controller, $action)) {
-        // On supprime les 2 premiers paramètres
-        unset($params[0]);
-        unset($params[1]);
-        // On appelle la méthode $action du contrôleur $controller
-        call_user_func_array([$controller, $action], $params);
+        unset($myparams[0]);
+        unset($myparams[1]);
+        call_user_func_array([$controller, $action], $myparams);
     } else {
-        // On envoie le code réponse 404
         http_response_code(404);
         echo "La page recherchée n'existe pas";
     }
 } else {
-    // Ici aucun paramètre n'est défini
-    // On appelle le contrôleur par défaut
     require_once(ROOT . 'controllers/Home.php');
 
-    // On instancie le contrôleur
     $controller = new Home();
-
-    // On appelle la méthode index
     $controller->index();
 }

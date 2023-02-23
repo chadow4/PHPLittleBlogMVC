@@ -11,12 +11,12 @@ class Articles extends Controller
     }
 
     #route http://localhost/articles/lire/slug
-    public function lire(string $slug)
+    public function show(string $slug)
     {
         $this->loadModel('Article');
         $article = $this->Article->findBySlug($slug);
         if ($article) {
-            $this->render('lire', compact('article'));
+            $this->render('show', compact('article'));
         } else {
             echo "Ce slug ne correspond à aucun article";
         }
@@ -32,6 +32,7 @@ class Articles extends Controller
             $this->loadModel('Article');
             $this->Article->addArticle($title, $content, $slug);
             echo "nouvel utilisateur";
+            header("Location: /mvc/articles");
         }
         $this->render('add', []);
     }
