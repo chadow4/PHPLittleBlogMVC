@@ -1,4 +1,7 @@
+
+
 <div class="row mb-5">
+    <h1 class="text-center fw-bold">Ajouter un article</h1>
     <form class="form col-12 col-md-6 m-auto d-flex flex-column" method="post" action="/mvc/articles/add">
         <div class="form-group">
             <label for="title">Titre:</label>
