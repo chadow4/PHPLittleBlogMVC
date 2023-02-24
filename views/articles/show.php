@@ -15,7 +15,7 @@
             <input type="hidden" name="article_slug" value="<?= $article['slug']; ?>">
             <div class="form-group">
                 <label class="form-label" for="content"></label>
-                <textarea class="form-control" id="content" name="content" rows="4"></textarea>
+                <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary col-5 m-auto mt-3 w-25">Envoyer</button>
         </form>
@@ -27,13 +27,18 @@
     </div>
 <?php endif; ?>
 
-<h2 id="comments" class="text-center">Liste des commentaires (<?= sizeof($article['comments']); ?>) : </h2>
+<h2 id="comments" class="text-center">Liste des commentaires
+    (<?= !empty($article['comments']) ? sizeof($article['comments']) : 0 ?>
+    ) : </h2>
+<?php if (!empty($article['comments'])): ?>
 <div class="d-flex my-5 justify-content-center align-items-center flex-column">
     <?php foreach ($article['comments'] as $comment): ?>
         <div class="card col-12 col-md-8 col-lg-4 my-2 p-4 shadow-lg">
-            <p class="m-0 text-primary fw-bold"><?= $comment['comment_author_pseudo'] ?></p> <span><?= $comment['comment_date'] ?></span>
+            <p class="m-0 text-primary fw-bold"><?= $comment['comment_author_pseudo'] ?></p>
+            <span><?= $comment['comment_date'] ?></span>
             <hr>
             <p class="m-0"><?= $comment['comment_content'] ?></p>
         </div>
     <?php endforeach; ?>
+    <?php endif; ?>
 </div>

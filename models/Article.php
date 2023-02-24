@@ -13,7 +13,7 @@ class Article extends Model
         $sql = "SELECT articles.id, articles.title, articles.content, articles.slug, users.pseudo AS article_author_pseudo, 
         comments.content AS comment_content, comments.date AS comment_date, comment_user.pseudo AS comment_author_pseudo 
         FROM " . $this->table . " INNER JOIN users ON articles.author_id = users.id 
-        LEFT JOIN comments ON articles.author_id = users.id
+        LEFT JOIN comments ON articles.id = comments.article_id 
         LEFT JOIN users AS comment_user ON comments.author_id = comment_user.id
         WHERE `slug`='" . $slug . "'" .
             "ORDER BY comments.date DESC";

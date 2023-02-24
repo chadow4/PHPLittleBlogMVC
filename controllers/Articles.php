@@ -28,11 +28,14 @@ class Articles extends Controller
                 $article['content'] = $row['content'];
                 $article['article_author_pseudo'] = $row['article_author_pseudo'];
             }
-            $article['comments'][] = array(
-                'comment_content' => $row['comment_content'],
-                'comment_author_pseudo' => $row['comment_author_pseudo'],
-                'comment_date' => $row['comment_date']
-            );
+            if (isset($row['comment_content'])) {
+                $article['comments'][] = array(
+                    'comment_content' => $row['comment_content'],
+                    'comment_author_pseudo' => $row['comment_author_pseudo'],
+                    'comment_date' => $row['comment_date']
+                );
+            }
+
         }
 
         $this->render('show', ['article' => $article]);
