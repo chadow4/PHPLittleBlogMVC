@@ -16,6 +16,7 @@ abstract class Controller
         require_once(ROOT . 'views/' . strtolower(get_class($this)) . '/' . $vue . '.php');
         // On stocke le contenu dans $content
         $content = ob_get_clean();
+
         // On fabrique le "template"
         require_once(ROOT . 'views/layout/default.php');
     }

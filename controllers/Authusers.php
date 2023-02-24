@@ -12,13 +12,9 @@ class Authusers extends Controller
             header("Location: /mvc/articles");
         }
         if (isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['password'])) {
-            $pseudo = $_POST['pseudo'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
             $this->loadModel('Authuser');
-            $this->Authuser->registerUser($pseudo, $email, $password) ? header("Location: /mvc/authusers/login")
+            $this->Authuser->registerUser($_POST['pseudo'],  $_POST['email'], $_POST['password']) ? header("Location: /mvc/authusers/login")
                 && exit() : $error = "Erreur lors de l'inscription";
-
         }
         $this->render('register', ['error' => $error]);
     }

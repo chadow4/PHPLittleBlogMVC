@@ -7,7 +7,7 @@
 <?php endif; ?>
 
 <div class="row mb-5">
-    <form class="form col-12col-md-6 col-lg-4 m-auto d-flex flex-column" method="post" action="/mvc/authusers/login">
+    <form class="form col-12  col-md-4 col-lg-3 m-auto d-flex flex-column" method="post" action="/mvc/authusers/login">
         <div class="form-group">
             <label for="pseudo">Pseudo:</label>
             <input type="text" class="form-control" name="pseudo" id="pseudo" required>

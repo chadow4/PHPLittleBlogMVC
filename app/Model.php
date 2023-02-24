@@ -3,9 +3,9 @@
 abstract class Model
 {
     private $host = "localhost";
-    private $db_name = "mvc";
-    private $username = "root";
-    private $password = "root";
+    private $db_name = "";
+    private $username = "";
+    private $password = "";
     protected $_connexion;
     public $table;
     
