@@ -1,6 +1,6 @@
 <?php
 
-class AuthUser extends Model
+class Authuser extends Model
 {
     public function __construct()
     {

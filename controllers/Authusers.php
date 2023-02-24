@@ -1,6 +1,6 @@
 <?php
 
-class AuthUsers extends Controller
+class Authusers extends Controller
 {
 
     #route http://localhost/authusers/register
@@ -15,8 +15,8 @@ class AuthUsers extends Controller
             $pseudo = $_POST['pseudo'];
             $email = $_POST['email'];
             $password = $_POST['password'];
-            $this->loadModel('AuthUser');
-            $this->AuthUser->registerUser($pseudo, $email, $password) ? header("Location: /mvc/authusers/login")
+            $this->loadModel('Authuser');
+            $this->Authuser->registerUser($pseudo, $email, $password) ? header("Location: /mvc/authusers/login")
                 && exit() : $error = "Erreur lors de l'inscription";
 
         }
@@ -33,8 +33,8 @@ class AuthUsers extends Controller
         if (isset($_POST['pseudo']) && isset($_POST['password'])) {
             $pseudo = $_POST['pseudo'];
             $password = $_POST['password'];
-            $this->loadModel('AuthUser');
-            $this->AuthUser->loginUser($pseudo, $password) ? header("Location: /mvc")
+            $this->loadModel('Authuser');
+            $this->Authuser->loginUser($pseudo, $password) ? header("Location: /mvc")
                 && exit() : $error = "Erreur lors de la connexion";
         }
         $this->render('login', ['error' => $error]);
