@@ -3,8 +3,8 @@
 abstract class Model
 {
     private $host = "localhost";
-    private $db_name = "";
-    private $username = "";
+    private $db_name = "blog";
+    private $username = "root";
     private $password = "";
     protected $_connexion;
     public $table;

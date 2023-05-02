@@ -10,17 +10,16 @@ class Article extends Model
 
     public function findBySlug(string $slug)
     {
-        $sql = "SELECT articles.id, articles.title, articles.content, articles.slug, users.pseudo AS article_author_pseudo, 
-        comments.content AS comment_content, comments.date AS comment_date, comment_user.pseudo AS comment_author_pseudo 
-        FROM " . $this->table . " INNER JOIN users ON articles.author_id = users.id 
-        LEFT JOIN comments ON articles.id = comments.article_id 
-        LEFT JOIN users AS comment_user ON comments.author_id = comment_user.id
-        WHERE `slug`='" . $slug . "'" .
-            "ORDER BY comments.date DESC";
+        $sql = "SELECT articles.id, articles.title, articles.content, articles.slug, users.pseudo AS author 
+            FROM " . $this->table . " 
+            INNER JOIN users ON articles.author_id = users.id 
+            WHERE `slug`=:slug";
         $query = $this->_connexion->prepare($sql);
+        $query->bindParam(':slug', $slug);
         $query->execute();
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
+
 
     public function addArticle(string $title, string $content, string $slug)
     {

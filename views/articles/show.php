@@ -3,7 +3,7 @@
         <h1 class="fw-lighter text-decoration-underline"><?= $article['title'] ?></h1>
         <p class="mt-3"><?= $article['content'] ?></p>
         <hr>
-        <p class="fw-bold">rédigé par: <?= $article['article_author_pseudo'] ?></p>
+        <p class="fw-bold">rédigé par: <?= $article['author'] ?></p>
     </div>
 </div>
 
@@ -34,10 +34,10 @@
 <div class="d-flex my-5 justify-content-center align-items-center flex-column">
     <?php foreach ($article['comments'] as $comment): ?>
         <div class="card col-12 col-md-8 col-lg-4 my-2 p-4 shadow-lg">
-            <p class="m-0 text-primary fw-bold"><?= $comment['comment_author_pseudo'] ?></p>
-            <span><?= $comment['comment_date'] ?></span>
+            <p class="m-0 text-primary fw-bold"><?= $comment['author'] ?></p>
+            <span><?= $comment['date'] ?></span>
             <hr>
-            <p class="m-0"><?= $comment['comment_content'] ?></p>
+            <p class="m-0"><?= $comment['content'] ?></p>
         </div>
     <?php endforeach; ?>
     <?php endif; ?>
