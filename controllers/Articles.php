@@ -2,7 +2,8 @@
 
 class Articles extends Controller
 {
-    #route http://localhost/articles/
+    # Route: http://localhost/articles/
+    # Affiche tous les articles avec une vue index
     public function index()
     {
         $this->loadModel('Article');
@@ -10,27 +11,31 @@ class Articles extends Controller
         $this->render('index', compact('articles'));
     }
 
-    #route http://localhost/articles/show/:slug
+    # Route: http://localhost/articles/show/:slug
+    # Affiche un article spécifique avec ses commentaires avec une vue show
     public function show(string $slug)
     {
-        // recupération de l'article avec son auteur
+        // Récupération de l'article avec son auteur
         $this->loadModel('Article');
         $article = $this->Article->findBySlug($slug);
+
         if (!$article) {
             echo "Ce slug ne correspond à aucun article";
             return false;
         }
 
-        // recupération des commentaires de l'article avec leurs auteurs
+        // Récupération des commentaires de l'article avec leurs auteurs
         $this->loadModel('Comment');
         $article['comments'] = $this->Comment->getCommentsByArticle($article['id']);
 
         $this->render('show', ['article' => $article]);
     }
 
-    #route http://localhost/articles/add
+    # Route: http://localhost/articles/add
+    # Ajoute un nouvel article avec une vue add
     public function add()
     {
+        // Vérification de la connexion de l'utilisateur
         if (!isset($_SESSION['user_id'])) {
             header("Location: /mvc/articles");
         }
@@ -43,7 +48,8 @@ class Articles extends Controller
             $this->Article->addArticle($title, $content, $slug);
             header("Location: /mvc/articles");
         }
+
+        // Affichage du formulaire pour ajouter un article
         $this->render('add', []);
     }
-
 }
