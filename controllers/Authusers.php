@@ -10,9 +10,8 @@ class Authusers extends Controller
 
         // Redirection vers la page d'accueil si l'utilisateur est déjà connecté
         if(isset($_SESSION['user_id'])) {
-            header("Location: /mvc/articles");
+          header("Location: /".APP."/articles");
         }
-
         // Traitement des données du formulaire d'inscription
         if (isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['password'])) {
             $this->loadModel('Authuser');
