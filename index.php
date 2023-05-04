@@ -5,6 +5,8 @@ ini_set("display_errors", 1);
 
 // Définition de la constante ROOT en utilisant le chemin du fichier index.php
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
+define('APP', basename(__DIR__));
+
 
 // Inclusion des fichiers Model.php et Controller.php
 require_once(ROOT . 'app/Model.php');

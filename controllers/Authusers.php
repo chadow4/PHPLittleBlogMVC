@@ -17,7 +17,7 @@ class Authusers extends Controller
         if (isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['password'])) {
             $this->loadModel('Authuser');
             $this->Authuser->registerUser($_POST['pseudo'],  $_POST['email'], $_POST['password'])
-                ? header("Location: /mvc/authusers/login") && exit()
+                ? header("Location: /".APP."/authusers/login") && exit()
                 : $error = "Erreur lors de l'inscription";
         }
 
@@ -31,7 +31,7 @@ class Authusers extends Controller
     {
         // Redirection vers la page d'accueil si l'utilisateur est déjà connecté
         if(isset($_SESSION['user_id'])) {
-            header("Location: /mvc/articles");
+            header("Location: /".APP."/articles");
         }
 
         $error = null;
@@ -42,7 +42,7 @@ class Authusers extends Controller
             $password = $_POST['password'];
             $this->loadModel('Authuser');
             $this->Authuser->loginUser($pseudo, $password)
-                ? header("Location: /mvc") && exit()
+                ? header("Location: /".APP) && exit()
                 : $error = "Erreur lors de la connexion";
         }
 
@@ -54,6 +54,6 @@ class Authusers extends Controller
     # Déconnecte l'utilisateur en détruisant la session et redirige vers la page d'accueil
     public function logout(){
         session_destroy();
-        header("Location: /mvc");
+        header("Location: /".APP);
     }
 }

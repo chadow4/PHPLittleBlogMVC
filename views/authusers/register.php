@@ -9,7 +9,7 @@
 
     <div class="row mb-5">
         <form class="form m-auto d-flex flex-column" method="post"
-              action="/mvc/authusers/register">
+              action="/<?= APP ?>/authusers/register">
             <div class="form-group">
                 <label for="pseudo">Pseudo:</label>
                 <input type="text" class="form-control" name="pseudo" id="pseudo" required>

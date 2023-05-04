@@ -70,22 +70,22 @@
 </style>
 <header class="row align-items-center py-3 m-0">
     <div class="col col-12 col-lg-4 text-center">
-        <a class="logo" href="/mvc">BLOG JULIEN INSA</a>
+        <a class="logo" href="/<?= APP ?>">BLOG JULIEN INSA</a>
     </div>
     <ul class="mt-3 mt-lg-0 col-12 col-lg-4 d-flex align-items-center justify-content-center gap-5 nav__list nav__list--primary">
-        <li class="nav__item"><a href="/mvc" class="nav__link">Accueil</a></li>
-        <li class="nav__item"><a href="/mvc/articles" class="nav__link">Liste articles</a></li>
+        <li class="nav__item"><a href="/<?= APP ?>" class="nav__link">Accueil</a></li>
+        <li class="nav__item"><a href="/<?= APP ?>/articles" class="nav__link">Liste articles</a></li>
         <?php if (isset($_SESSION['user_id'])): ?>
-            <li class="nav__item"><a href="/mvc/articles/add" class="nav__link">Ajouter article</a></li>
+            <li class="nav__item"><a href="/<?= APP ?>/articles/add" class="nav__link">Ajouter article</a></li>
         <?php endif; ?>
     </ul>
     <ul class="mt-3 mt-lg-0 col-12 col-lg-4 d-flex align-items-center justify-content-center gap-5 nav__list">
         <?php if (isset($_SESSION['user_id'])): ?>
-            <li class="nav__item"><a href="/mvc/authusers/logout" class="nav__link nav__link--button">Déconnexion</a>
+            <li class="nav__item"><a href="/<?= APP ?>/authusers/logout" class="nav__link nav__link--button">Déconnexion</a>
             </li>
         <?php else: ?>
-            <li class="nav__item"><a href="/mvc/authusers/login" class="nav__link">Connexion</a></li>
-            <li class="nav__item"><a href="/mvc/authusers/register" class="nav__link nav__link--button">Inscription</a>
+            <li class="nav__item"><a href="/<?= APP ?>/authusers/login" class="nav__link">Connexion</a></li>
+            <li class="nav__item"><a href="/<?= APP ?>/authusers/register" class="nav__link nav__link--button">Inscription</a>
             </li>
         <?php endif; ?>
     </ul>

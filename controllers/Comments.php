@@ -18,7 +18,7 @@ class Comments extends Controller
             // Appeler la méthode addComment pour ajouter le commentaire
             $this->Comment->addComment($content, $article_id);
             // Rediriger l'utilisateur vers la page de l'article où le commentaire a été ajouté
-            $page = "/mvc/articles/show/" . $article_slug . "#comments";
+            $page = "/" . APP . "/articles/show/" . $article_slug . "#comments";
             header("Refresh: 0; url=$page");
         }
     }

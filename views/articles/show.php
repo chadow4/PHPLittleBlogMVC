@@ -10,7 +10,7 @@
 <?php if (isset($_SESSION['user_id'])) : ?>
     <div class="row mb-5">
         <h3 class="text-center fw-bold">Ajouter un commentaire</h3>
-        <form class="form col-12 col-md-4 m-auto d-flex flex-column" method="post" action="/mvc/comments/add">
+        <form class="form col-12 col-md-4 m-auto d-flex flex-column" method="post" action="/<?= APP ?>/comments/add">
             <input type="hidden" name="article_id" value="<?= $article['id']; ?>">
             <input type="hidden" name="article_slug" value="<?= $article['slug']; ?>">
             <div class="form-group">

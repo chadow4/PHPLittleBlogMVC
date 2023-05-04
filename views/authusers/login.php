@@ -11,7 +11,7 @@
 
     <div class="row mb-5">
         <form class="form m-auto d-flex flex-column" method="post"
-              action="/mvc/authusers/login">
+              action="/<?= APP ?>/authusers/login">
             <div class="form-group">
                 <label for="pseudo">Pseudo:</label>
                 <input type="text" class="form-control" name="pseudo" id="pseudo" required>

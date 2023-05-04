@@ -37,7 +37,7 @@ class Articles extends Controller
     {
         // Vérification de la connexion de l'utilisateur
         if (!isset($_SESSION['user_id'])) {
-            header("Location: /mvc/articles");
+            header("Location: /".APP."/articles");
         }
 
         if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['slug'])) {
@@ -46,7 +46,7 @@ class Articles extends Controller
             $slug = htmlspecialchars($_POST['slug']);
             $this->loadModel('Article');
             $this->Article->addArticle($title, $content, $slug);
-            header("Location: /mvc/articles");
+            header("Location: /".APP."/articles");
         }
 
         // Affichage du formulaire pour ajouter un article
