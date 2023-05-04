@@ -18,11 +18,12 @@ class Articles extends Controller
         $article = $this->Article->findBySlug($slug);
         if (!$article) {
             echo "Ce slug ne correspond à aucun article";
+            return false;
         }
 
         // recupération des commentaires de l'article avec leurs auteurs
-       $this->loadModel('Comment');
-       $article['comments'] = $this->Comment->getCommentsByArticle($article['id']);
+        $this->loadModel('Comment');
+        $article['comments'] = $this->Comment->getCommentsByArticle($article['id']);
 
         $this->render('show', ['article' => $article]);
     }

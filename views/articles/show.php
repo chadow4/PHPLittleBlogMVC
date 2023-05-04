@@ -4,7 +4,7 @@
         <p class="mt-3"><?= $article['content'] ?></p>
         <hr>
         <p class="fw-bold">rédigé par: <?= $article['author'] ?></p>
-    </div>
+    </div>44
 </div>
 
 <?php if (isset($_SESSION['user_id'])) : ?>
